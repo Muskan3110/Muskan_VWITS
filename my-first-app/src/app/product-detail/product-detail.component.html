@@ -1,0 +1,19 @@
+<!-- <h2> Below is the Child Component </h2>
+
+<h2> Product Details are Below</h2>
+<p> Name : {{ product?.name }}</p>
+<p> Price : INR. {{ product?.price }}</p>
+
+<!-- Implemeting the add to cart service using the child componenetbelow-->
+
+<!-- <button (click)="onAddToCart()"> Add To Cart (+) </button> -->
+
+//for routing
+<h2>Product Detail</h2>
+<div *ngIf="product">
+  <p><strong>Name:</strong> {{ product.name }}</p>
+  <p><strong>Price:</strong> ${{ product.price }}</p>
+</div>
+<div *ngIf="!product">
+  <p>Product not found.</p>
+</div>

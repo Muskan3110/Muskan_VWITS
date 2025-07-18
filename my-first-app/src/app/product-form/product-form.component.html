@@ -1,0 +1,55 @@
+<p>product-form works!</p>
+
+<form #productForm="ngForm" (ngSubmit)="onSubmit(productForm)" novalidate>
+
+    <div>
+        <label for="name"> Product Name </label>
+        <input type="text" id="name" name="name" class="form-control" [(ngModel)]="product.name" required minlength="3" #name="ngModel"/>
+        <div *ngIf="name.invalid && name.touched" class="text-danger">
+           <div *ngIf="name.errors?.['required']">
+            Product Name is required
+           </div>
+           <div *ngIf="name.errors?.['minlength']">
+            Minimum 3 chracters is required
+           </div>
+        </div>
+     </div>
+   
+     <div>
+       <label for="price"> Product price </label>
+       <input type="number" id="price" name="price" class="form-control" [(ngModel)]="product.price" required min="5" max="100" #price="ngModel"/>
+       <div *ngIf="price.invalid && price.touched" class="text-danger">
+         <div *ngIf="price.errors?.['required']" >
+             Price is required
+         </div>
+         <div *ngIf="price.errors?.['min']" >
+            minimum price is 10.00
+        </div>
+       </div>
+    </div>
+
+    <div>
+        <label for="category"> Product Category</label>
+        <select type="text" id="category" name="category" class="form-select" [(ngModel)]="product.category" required #category="ngModel">
+            <option value="" > Select Category </option>
+            <option value="Electronics"> Electronics </option>
+            <option value="Clothing"> Clothing</option>
+            <option value="Home"> Home Decor </option>
+        </select>
+        <div *ngIf="category.invalid && category.touched" class="text-danger">
+         <div *ngIf="category.errors?.['required']">
+            Category is required
+         </div>
+        </div>
+     </div>
+   
+    <div>
+       <label for="description"> Description </label>
+       <textarea id="description" name="description" class="form-control" [(ngModel)]="product.description" required row="3">
+       </textarea>
+    </div>
+
+    <button type="submit" [disabled]="productForm.invalid"> Submit </button>
+
+</form>
+

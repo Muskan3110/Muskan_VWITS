@@ -1,0 +1,18 @@
+<h2> Below is the parent compoenent </h2>
+
+<h2> Product List</h2>
+<ul>
+    <li *ngFor="let prod of products" (click)="selectProduct(prod)">
+        {{prod.name}} ----   ${{prod.price}}
+    </li>
+</ul>
+
+<h3> Cart ({{cart.length}})</h3>
+<ul>
+    <li *ngFor="let item of cart">
+      {{item.name}}
+    </li>
+</ul>
+
+<!--app-product-detail [product] = "selectedProduct" (addTocart)="handleAddToCart($event)"></app-product-detail -->    <!-- passing the product property to the Child componenet -->
+<!-- <app-product-detail [product] = "selectedProduct"></app-product-detail>   //passing the product property to the Child componenet  -->

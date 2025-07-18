@@ -1,0 +1,48 @@
+<!-- <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+
+    <label> name </label>
+    <input type="text" id="name" formControlName="name">
+
+    <label> Email </label>
+    <input type="email" id="email" formControlName="email">
+
+    <label> Password </label>
+    <input type="password" id="password" formControlName="password">
+
+    <button type="submit" [disabled]="myForm.invalid"> Submit </button>
+
+</form> -->
+
+<form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+
+    <label> Product name </label>
+    <input formControlName="name">
+    <div *ngIf="f.name.touched && f.name.invalid">
+       <small *ngIf="f.name.errors?.required"> Nmae is required</small>
+       <small *ngIf="f.name.errors?.minlength"> Minimum 3 characters are required</small>
+    </div>
+
+    <label> Price </label>
+    <input type="number" formControlName="price">
+    <div *ngIf="f.price.touched && f.price.invalid">
+        <small *ngIf="f.price.errors?.required"> Price is required</small>
+        <small *ngIf="f.price.errors?.minlength"> Minimum price should be 10.00</small>
+     </div>
+
+    <label> Description </label>
+    <textarea formControlName="description"></textarea>
+
+    <label> Category </label>
+    <select formControlName="category">
+       <option value=""> Select </option>
+       <option value="electronics"> Electronics </option>
+       <option value="books"> Books </option>
+       <option value="clothing"> Clothing </option>
+    </select>
+    <div *ngIf="f.category.touched && f.category.invalid">
+        <small> category is required</small>
+     </div>
+
+    <button type="submit"> Submit </button>
+
+</form>

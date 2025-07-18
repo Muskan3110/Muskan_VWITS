@@ -1,0 +1,44 @@
+<!-- <button {click}="isShow =!isShow">{{ isShow ? 'hide' : isShow }}</button>
+
+<div *ngIf="isShow; else ifNotShow">
+    <div>
+        <h2>{{product.name}}</h2> -->
+        <!-- <p>{{product.description}}</p>
+        <h3>INR. {{product.price}}</h3>
+    </div>
+</div>
+
+<div *ngIf="isShow">
+    Product to show
+</div>
+
+<ng-template #ifNotShow>
+    <p> Product is not found</p>
+</ng-template> -->
+<div>
+    <table>
+        <thead>
+            <tr>
+                <th>Product ID</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Description</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let prod of product">
+                <td>{{prod.id}}</td>
+                <td>{{prod.name}}</td>
+                <td>{{prod.price}}</td>
+                <td>{{prod.description}}</td>
+                <td>
+                    <div [ngSwitch] ="prod.status">
+                        <p *ngSwitchCase="'in-stock'">Avaialable</p>
+                        <p *ngSwitchCase="'out-of-stock'">Not-Avaialable</p>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
